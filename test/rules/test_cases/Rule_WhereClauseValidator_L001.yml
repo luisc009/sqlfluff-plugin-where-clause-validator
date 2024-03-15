@@ -1,0 +1,24 @@
+rule: WhereClauseValidator_L001
+
+update_present_where_clause:
+  pass_str: |
+    update tbl
+    set a = 1, b = 2
+    where c = 3
+
+update_missing_where_clause:
+  fail_str: |
+    update
+    tbl
+    set a = 1, b = 2
+
+delete_present_where_clause:
+  pass_str: |
+    delete from tbl
+    where c = 3
+
+delete_missing_where_clause:
+  fail_str: |
+    delete from
+    tbl
+
